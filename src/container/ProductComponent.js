@@ -9,7 +9,7 @@ const ProductComponent = () => {
           const  {id, price,category,title,image} = product ;
          return (
            <div className="ui grid">
-             <div className="ui container four column wide" key={id}>
+             <div className="four column wide" key={id}>
                <div className="ui cards">
                  <div className="card">
                    <div className="image">
