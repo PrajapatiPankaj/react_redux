@@ -21,6 +21,8 @@ const ProductListing = () => {
     fetchProducts();
   });
 
+ 
+
   return (
     <div className="ui grid container">
       <ProductComponent />
