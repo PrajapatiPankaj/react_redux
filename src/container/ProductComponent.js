@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 
 const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
-    const {id,title} = products[0];
+    
 
   console.log(products);
   return (
-    <div className="four column wide" key={id}>
+    <div className="four column wide">
         <div className="ui link cards">
             <div className="card">
                 <div className="image"> </div>
                     <div className="content">
-                        <div className="header">{title}</div>
+                     <div className="header"> </div> 
                     </div>
             </div>
         </div>
