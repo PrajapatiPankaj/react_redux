@@ -11,19 +11,20 @@ const ProductComponent = () => {
     return (
       <div className="ui grid">
         <div className="four column wide" key={id}>
-            <Link />
-          <div className="ui cards">
-            <div className="ui centered card">
-              <div className="ui small centered image">
-                <img src={image} alt={title} />
-              </div>
-              <div className="content">
-                <div className="header">{title}</div>
-                <div className="meta price">$ {price} </div>
-                <div className="meta">{category}</div>
+          <Link to={`/product/${id}`}>
+            <div className="ui cards">
+              <div className="ui card">
+                <div className="ui small centered image">
+                  <img src={image} alt={title} />
+                </div>
+                <div className="content">
+                  <div className="header">{title}</div>
+                  <div className="meta price">$ {price} </div>
+                  <div className="meta">{category}</div>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     );
