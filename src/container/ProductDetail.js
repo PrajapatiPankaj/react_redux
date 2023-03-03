@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectedProduct } from "../redux/actions/productActions";
+import { selectedProduct ,  removeSelectedProduct } from "../redux/actions/productActions";
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
@@ -27,40 +27,47 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetail();
-  }, [productId]);
+    dispatch(removeSelectedProduct()) 
+   }, [productId]);
 
   return (
     <div className="ui grid container">
-      {Object.keys(product).length == 0 ? (
+      {Object.keys(product).length === 0 ? (
         <div>Loading...</div>
       ) : (
         <div className="ui placeholder segment">
-          <div calssName="two column stakable center aligned grid">
-            <div className="ui vertical devider">
-              AND
-              <div className="middle aligned row">
-                <div className="column lp">
-                  <div className="ui small centered image">
-                    <img src={image} />
+          <div
+            calssName="ui two column very 
+            relaxed stackable grid"
+          >
+            <div className="column ">
+              <div className="ui small centered image">
+                <img src={image} />
+              </div>
+            </div>
+
+            <div className="midddle aligned column">
+              <div>
+                <h1>{title}</h1>
+                <h2>
+                  <a className="ui teal tag label" href="#">
+                    ${price}
+                  </a>
+                </h2>
+                <h3 className="ui brown block header">{category}</h3>
+                <p>{description}</p>
+                <div className="ui vertical animated button" tabIndex="0">
+                  <div className="hidden content">
+                    <i className="shop icon"></i>
                   </div>
-                  <div className="colunm rp">
-                    <h1>{title}</h1>
-                    <h2>
-                      <a className="ui teal tag label">${price}</a>
-                    </h2>
-                    <h3 className="ui brown block header">{category}</h3>
-                    <p>{description}</p>
-                    <div className="ui vertical animated button" tabIndex="0">
-                      <div className="hidden content">
-                        <i className="shop icon"></i>
-                      </div>
-                      <div className="visible content">Add to Cart</div>
-                    </div>
-                  </div>
+                  <div className="visible content">Add to Cart</div>
                 </div>
               </div>
             </div>
+
           </div>
+
+          <div class="ui vertical divider">Or</div>
         </div>
       )}
     </div>
