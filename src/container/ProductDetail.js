@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectedProduct ,  removeSelectedProduct } from "../redux/actions/productActions";
+import {
+  selectedProduct,
+  removeSelectedProduct,
+} from "../redux/actions/productActions";
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
 
-  const {image,title, description,price,category} = product;
+  const { image, title, description, price, category } = product;
 
   const dispatch = useDispatch();
   const { productId } = useParams();
@@ -27,26 +30,23 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetail();
-    dispatch(removeSelectedProduct()) 
-   }, [productId]);
+    dispatch(removeSelectedProduct());
+  }, [productId]);
 
   return (
-    <div className="ui grid container">
+    <div className="ui center aligned container">
       {Object.keys(product).length === 0 ? (
         <div>Loading...</div>
       ) : (
         <div className="ui placeholder segment">
-          <div
-            calssName="ui two column very 
-            relaxed stackable grid"
-          >
+          <div calssName=" ui two column grid">
             <div className="column ">
-              <div className="ui small centered image">
+              <div className="ui medium image">
                 <img src={image} />
               </div>
             </div>
 
-            <div className="midddle aligned column">
+            <div className=" ui column ">
               <div>
                 <h1>{title}</h1>
                 <h2>
@@ -64,10 +64,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-
           </div>
-
-          <div class="ui vertical divider">Or</div>
         </div>
       )}
     </div>
